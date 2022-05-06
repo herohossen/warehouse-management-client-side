@@ -12,9 +12,9 @@ import { signOut } from "firebase/auth";
 const Header = () => {
   const [user, loading] = useAuthState(auth);
   return (
-    <div >
+    <div>
       <Navbar
-      className="header"
+        className="header"
         collapseOnSelect
         sticky="top"
         expand="lg"
@@ -61,7 +61,23 @@ const Header = () => {
                 Inventory
               </NavLink>
               {/* dropdown menu start */}
-              <NavDropdown title="Menu Items" id="collasible-nav-dropdown">
+              <NavDropdown title="Inventory Items" id="collasible-nav-dropdown">
+                <NavDropdown.Item as={Link} to="/manageinventory">
+                  Manage Inventory
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/addmanageinventoryitem">
+                  Add New Item
+                </NavDropdown.Item>
+                {/* <NavDropdown.Divider /> */}
+                {/* this is only log out button */}
+      
+              </NavDropdown>
+              {/* dropdown menu end */}
+              {/* navbar menu end first section */}
+            </Nav>
+            <Nav>
+              {/* dropdown menu start */}
+              <NavDropdown title="User Menu" id="collasible-nav-dropdown">
                 <NavDropdown.Item as={Link} to="/manageitem">
                   Manage Items
                 </NavDropdown.Item>
@@ -79,8 +95,7 @@ const Header = () => {
               </NavDropdown>
               {/* dropdown menu end */}
               {/* navbar menu end first section */}
-            </Nav>
-            <Nav>
+
               {user ? (
                 <button
                   className="btn btn-warning"

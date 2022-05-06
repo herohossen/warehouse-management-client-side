@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
 
-const useItemDetails = (ItemId) => {
+const useItemDetails = (itemId) => {
   const [item, setItem] = useState({});
 
   useEffect(() => {
-    const url = `http://localhost:8888/item/${ItemId}`;
+    const url = `http://localhost:8888/item/${itemId}`;
     console.log(url);
     fetch(url)
       .then((res) => res.json())
       .then((data) => setItem(data));
-  }, [ItemId]);
+  }, [itemId]);
 
-  return [item];
+  return [item, setItem];
 };
+
 
 export default useItemDetails;

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
-import "../../styles/pages/ManageItem.css";
+import "../ManageInventory/ManageInventory.css";
 
-
-const ManageItem = () => {
+const ManageInventory = () => {
   const [items, setItems] = useState([]);
   useEffect(() => {
     fetch("http://localhost:8888/item")
@@ -31,13 +30,12 @@ const ManageItem = () => {
       );
     }
   };
-
   return (
     <div>
       <h1>Items {items.length}</h1>
 
-      <Table striped bordered hover size="sm" className="bordercell">
-        <thead className="bordercell">
+      <Table striped bordered hover size="sm" className="manageInventory">
+        <thead className="">
           <tr>
             <th>Id</th>
             <th>name</th>
@@ -47,7 +45,7 @@ const ManageItem = () => {
           </tr>
         </thead>
         {items.map((item) => (
-          <tbody className="bordercell" key={item._id}>
+          <tbody className="" key={item._id}>
             <tr>
               <td>{item._id}</td>
               <td>{item.name}</td>
@@ -57,9 +55,7 @@ const ManageItem = () => {
                 <img height={40} width={40} src={item.img} alt="" />
               </td>
               <td>
-                <button>
-               Update
-                </button>
+                <button>Update</button>
               </td>
               <td>
                 <button onClick={() => handeluserdelete(item._id)}>
@@ -74,4 +70,4 @@ const ManageItem = () => {
   );
 };
 
-export default ManageItem;
+export default ManageInventory;

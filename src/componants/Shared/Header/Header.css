@@ -1,4 +1,4 @@
-.pfd{
+.header{
   margin-bottom:0px;
   margin-top: 0px;
   padding-top:0px;
@@ -34,7 +34,7 @@
     font-weight: 500;
   }
 
-  .backg{
+  .headerbackg{
     background-color:orange;
     width: 100%;
     padding-bottom:20px;

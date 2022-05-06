@@ -14,14 +14,14 @@ const Header = () => {
   return (
     <div >
       <Navbar
-      className="pfd"
+      className="header"
         collapseOnSelect
         sticky="top"
         expand="lg"
         bg="light"
         variant="light"
       >
-        <Container fluid className="backg">
+        <Container fluid className="headerbackg">
           <Navbar.Brand as={Link} to="/">
             <img
               height={40}

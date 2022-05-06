@@ -4,6 +4,7 @@ import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import Swal from "sweetalert2";
 const SignUp = () => {
   const [userInfo, setUserInfo] = useState({
     email: "",
@@ -14,10 +15,10 @@ const SignUp = () => {
   const [errors, setErrors] = useState({
     email: "",
     password: "",
-    general: "",
+    confirmPass: "",
   });
 
-  const [showPass, setShowPass] = useState(false);
+  // const [showPass, setShowPass] = useState(false);
 
   const [createUserWithEmailAndPassword, user, loading, hookError] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
@@ -63,7 +64,15 @@ const SignUp = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     console.log(userInfo);
+
     createUserWithEmailAndPassword(userInfo.email, userInfo.password);
+    Swal.fire({
+      // position: "top-end",
+      icon: "success",
+      title: "Registerd Successfully",
+      showConfirmButton: false,
+      timer: 2000,
+    });
   };
 
   useEffect(() => {
@@ -102,19 +111,18 @@ const SignUp = () => {
         {errors?.email && <p className="error-message">{errors.email}</p>}
         <div className="relative">
           <input
-            type={showPass ? "text" : "password"}
+          type="password"
+          
             placeholder="password"
             onChange={handlePasswordChange}
           />
           {errors?.password && (
             <p className="error-message">{errors.password}</p>
           )}
-          <p
+          {/* <p
             className="absolute top-3 right-5"
             onClick={() => setShowPass(!showPass)}
-          >
-            🔥
-          </p>
+          ></p> */}
         </div>
         <input
           type="password"

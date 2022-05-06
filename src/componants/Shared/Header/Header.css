@@ -1,7 +1,13 @@
+.pfd{
+  margin-bottom:0px;
+  margin-top: 0px;
+  padding-top:0px;
+}
+
 .link {
     display: flex;
     align-items: center;
-    color: black;
+    color: white;
     font-size: 18px;
     font-weight: 500;
     text-decoration: none;
@@ -23,7 +29,13 @@
   #collasible-nav-dropdown {
     display: flex;
     align-items: center;
-    color: black;
+    color: white;
     font-size: 18px;
     font-weight: 500;
+  }
+
+  .backg{
+    background-color:orange;
+    width: 100%;
+    padding-bottom:20px;
   }

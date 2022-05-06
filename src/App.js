@@ -1,15 +1,18 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-toastify/dist/ReactToastify.css";
+// import "sweetalert2/src/sweetalert2.scss";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
+// import RequireAuth from "./componants/RequireAuth";
 import Blog from "./componants/pages/Blog";
-import Header from "./componants/Shared/Header";
-import Home from "./componants/pages/Home";
+import Header from "./componants/Shared/Header/Header";
+import Home from "./componants/pages/Home/Home/Home";
 import AddItem from "./componants/pages/AddItem";
 import ManageItem from "./componants/pages/ManageItem";
 import MyItem from "./componants/pages/MyItem";
 import NotFound from "./componants/pages/NotFound";
 import SignUp from "./componants/Auths/SignUp";
+import Inventory from "./componants/pages/Inventory/Inventory";
 import { ToastContainer } from "react-toastify";
 import SignIn from "./componants/Auths/SignIn";
 
@@ -22,11 +25,13 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/home" element={<Home />}></Route>
         <Route path="/additem" element={<AddItem />}></Route>
+        <Route path="/additem" element={<AddItem />}></Route>
         <Route path="/manageitem" element={<ManageItem />}></Route>
         <Route path="/myitem" element={<MyItem />}></Route>
         <Route path="/blog" element={<Blog />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>
         <Route path="/signin" element={<SignIn />}></Route>
+        <Route path="/inventory" element={<Inventory />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
       <ToastContainer

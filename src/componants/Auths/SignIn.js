@@ -13,13 +13,13 @@ const SignIn = () => {
   const [errors, setErrors] = useState({
     email: "",
     password: "",
-    general: "",
   });
 
   const [signInWithEmail, user, loading, hookError] =
     useSignInWithEmailAndPassword(auth);
   const [signInWithGoogle, googleUser, loading2, googleError] =
     useSignInWithGoogle(auth);
+
 
   const handleEmailChange = (e) => {
     const emailRegex = /\S+@\S+\.\S+/;
@@ -83,11 +83,19 @@ const SignIn = () => {
     }
   }, [hookError, googleError]);
 
+  if(loading){
+    return <p>Loding...</p>
+  }
+
+
+
   return         <div className="login-container">
   <div className="login-title">LOGIN</div>
-  <form className="login-form" onSubmit={handleLogin}>
+  <form className="login-form" onSubmit={handleLogin} autoComplete="off" required>
       <input type="text" placeholder="Your Email" onChange={handleEmailChange} />
+
       {errors?.email && <p className="error-message">{errors.email}</p>}
+
       <input type="password" placeholder="password" onChange={handlePasswordChange} />
       {errors?.password && <p className="error-message">{errors.password}</p> }
       <button>Login</button>

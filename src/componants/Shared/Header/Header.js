@@ -1,30 +1,36 @@
 import React from "react";
+import logo from "../../../images/banner/logo.jpg";
+import laptop from "../../../images/banner/laptop.png";
+
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
-import "../../styles/Header.css";
-// import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-// import auth from "../firebase.init";
-// import { useAuthState } from "react-firebase-hooks/auth";
+import "../Header/Header.css";
+import auth from "../../../firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { signOut } from "firebase/auth";
+
 const Header = () => {
+  const [user, loading] = useAuthState(auth);
   return (
-    <div>
+    <div >
       <Navbar
+      className="pfd"
         collapseOnSelect
         sticky="top"
         expand="lg"
         bg="light"
         variant="light"
       >
-        <Container>
+        <Container fluid className="backg">
           <Navbar.Brand as={Link} to="/">
             <img
-              height={30}
-              width={30}
-              //   src={logo}
+              height={40}
+              width={40}
+              src={laptop}
               alt=""
               className="d-inline-block align-top"
             />{" "}
-            Gtech
+            TecMania
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -45,6 +51,14 @@ const Header = () => {
                 to="/blog"
               >
                 Blogs
+              </NavLink>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "active-link" : "link"
+                }
+                to="/inventory"
+              >
+                Inventory
               </NavLink>
               {/* dropdown menu start */}
               <NavDropdown title="Menu Items" id="collasible-nav-dropdown">
@@ -67,22 +81,33 @@ const Header = () => {
               {/* navbar menu end first section */}
             </Nav>
             <Nav>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "active-link" : "link"
-                }
-                to="/signin"
-              >
-                Login
-              </NavLink>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "active-link" : "link"
-                }
-                to="/signup"
-              >
-                Register
-              </NavLink>
+              {user ? (
+                <button
+                  className="btn btn-warning"
+                  onClick={() => signOut(auth)}
+                >
+                  Sign Out
+                </button>
+              ) : (
+                <>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "active-link" : "link"
+                    }
+                    to="/signin"
+                  >
+                    Login
+                  </NavLink>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "active-link" : "link"
+                    }
+                    to="/signup"
+                  >
+                    Register
+                  </NavLink>
+                </>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>

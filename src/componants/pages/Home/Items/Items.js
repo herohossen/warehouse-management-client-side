@@ -16,7 +16,7 @@ const Items = () => {
       <div className="row">
         <h1 className="text-primary text-center mt-5"> Items</h1>
         <div className="items-container">
-          {items.map((item) => (
+          {items.slice(0, 6).map((item) => (
             <Item key={item._id} item={item}></Item>
           ))}
         </div>

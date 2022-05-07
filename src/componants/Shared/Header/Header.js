@@ -65,12 +65,11 @@ const Header = () => {
                 <NavDropdown.Item as={Link} to="/manageinventory">
                   Manage Inventory
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/addmanageinventoryitem">
+                <NavDropdown.Item as={Link} to="/addinventoryitem">
                   Add New Item
                 </NavDropdown.Item>
                 {/* <NavDropdown.Divider /> */}
                 {/* this is only log out button */}
-      
               </NavDropdown>
               {/* dropdown menu end */}
               {/* navbar menu end first section */}

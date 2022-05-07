@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import "../ManageInventory/ManageInventory.css";
 
 const ManageInventory = () => {
   const [items, setItems] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     fetch("http://localhost:8888/item")
       // fetch("https://inventory-management-p11.herokuapp.com/item")
@@ -33,7 +35,7 @@ const ManageInventory = () => {
   return (
     <div>
       <h1>Items {items.length}</h1>
-
+      <button onClick={() => navigate(`/addinventoryitem`)}>Add Item</button>
       <Table striped bordered hover size="sm" className="manageInventory">
         <thead className="">
           <tr>

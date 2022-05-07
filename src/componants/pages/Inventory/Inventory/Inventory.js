@@ -37,7 +37,7 @@ const Inventory = () => {
   const handleIncreases = (event) => {
     const IncQuantity = parseInt(event.target.value);
     if (IncQuantity < 0) {
-      alert("Negative input is not allowed");
+      alert("Item is sold");
     } else {
       console.log(IncQuantity);
       setIncQuantity(IncQuantity);

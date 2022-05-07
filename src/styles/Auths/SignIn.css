@@ -13,8 +13,12 @@
   margin: 0 auto 100px;
   padding: 45px;
   text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+   */
+   box-shadow: 0 0 5px 0 orange, 0 2px 3px 0 orange;
 }
+
+
 .login-form input {
   font-family: "Roboto", sans-serif;
   outline: 0;
@@ -87,6 +91,13 @@
 }
 .login-form-container .info span .fa {
   color: #EF3B3A;
+}
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+  border-bottom: 2px solid #16a085;
+  /* border-bottom: 2px solid red; */
+  color: #16a085;
+  transition: 0.2s ease;
 }
 body {
   /* background: #76b852; fallback for old browsers */

@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { FaGoogle } from 'react-icons/fa';
 import "../../styles/Auths/SignUp.css";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
@@ -22,7 +26,8 @@ const SignUp = () => {
 
   const [createUserWithEmailAndPassword, user, loading, hookError] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
-
+  const [signInWithGoogle, googleUser, loading2, googleError] =
+    useSignInWithGoogle(auth);
   const handleEmailChange = (e) => {
     const emailRegex = /\S+@\S+\.\S+/;
     const validEmail = emailRegex.test(e.target.value);
@@ -100,43 +105,61 @@ const SignUp = () => {
     }
   }, [user]);
   return (
-    <div className="login-container">
-      <div className="login-title">Sign up</div>
-      <form className="login-form" onSubmit={handleLogin}>
-      {errors?.email && <p className="error-message">{errors.email}</p>}
-        <input
-          type="text"
-          placeholder="Your Email"
-          onChange={handleEmailChange}
-        />
-        {/* {errors?.email && <p className="error-message">{errors.email}</p>} */}
-        <div className="relative">
+    <div className="login-container2">
+      <div className="left">
+        <div className="login-title">Sign up</div>
+        <form className="" onSubmit={handleLogin}>
+          {errors?.email && <p className="error-message">{errors.email}</p>}
           <input
-          type="password"
-          
-
-            placeholder="password"
-            onChange={handlePasswordChange}
+            type="text"
+            placeholder="Your Email"
+            onChange={handleEmailChange}
+            required
           />
-          {errors?.password && (
-            <p className="error-message">{errors.password}</p>
-          )}
-          {/* <p
+          {/* {errors?.email && <p className="error-message">{errors.email}</p>} */}
+          <div className="relative">
+            <input
+              type="password"
+              placeholder="password"
+              onChange={handlePasswordChange}
+              required
+            />
+            {errors?.password && (
+              <p className="error-message">{errors.password}</p>
+            )}
+            {/* <p
             className="absolute top-3 right-5"
             onClick={() => setShowPass(!showPass)}
           ></p> */}
-        </div>
-        <input
-          type="password"
-          placeholder="confirm password"
-          onChange={handleConfirmPasswordChange}
-        />
+          </div>
+          <input
+            type="password"
+            placeholder="confirm password"
+            onChange={handleConfirmPasswordChange}
+            required
+          />
 
-        <button>Sign up</button>
+          <button className="signup-button">Sign up</button>
 
-        {/* {error && <p className="error-message">{error}</p> } */}
-        {/* {hookError && <p className="error-message">{hookError?.message}</p>} */}
-      </form>
+          {/* {error && <p className="error-message">{error}</p> } */}
+          {/* {hookError && <p className="error-message">{hookError?.message}</p>} */}
+        </form>
+      </div>
+      <div className="right">
+        <span className="loginwith">
+          Sign in with
+          <br />
+          social network
+        </span>
+        <button
+          className="social-signin google"
+          onClick={() => signInWithGoogle()}
+        >
+          <FaGoogle/>  Signup with Google
+        </button>
+      </div>
+
+      <div className="or">OR</div>
     </div>
   );
 };

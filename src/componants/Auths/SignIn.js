@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import "../../styles/Auths/SignIn.css";
+import { FaGoogle } from "react-icons/fa";
 
 const SignIn = () => {
   const [userInfo, setUserInfo] = useState({
@@ -19,7 +20,6 @@ const SignIn = () => {
     useSignInWithEmailAndPassword(auth);
   const [signInWithGoogle, googleUser, loading2, googleError] =
     useSignInWithGoogle(auth);
-
 
   const handleEmailChange = (e) => {
     const emailRegex = /\S+@\S+\.\S+/;
@@ -83,32 +83,49 @@ const SignIn = () => {
     }
   }, [hookError, googleError]);
 
-  if(loading){
-    return <p>Loding...</p>
+  if (loading) {
+    return <p>Loding...</p>;
   }
 
+  return (
+    <div className="login-container">
+      <div className="login-title">LOGIN</div>
+      <div className="login-form">
+        <form onSubmit={handleLogin} autoComplete="off" required>
+          <input
+            type="text"
+            placeholder="Your Email"
+            onChange={handleEmailChange}
+          />
 
+          {errors?.email && <p className="error-message">{errors.email}</p>}
 
-  return         <div className="login-container">
-  <div className="login-title">LOGIN</div>
-  <form className="login-form" onSubmit={handleLogin} autoComplete="off" required>
-      <input type="text" placeholder="Your Email" onChange={handleEmailChange} />
+          <input
+            type="password"
+            placeholder="password"
+            onChange={handlePasswordChange}
+          />
+          {errors?.password && (
+            <p className="error-message">{errors.password}</p>
+          )}
+          <button>Login</button>
 
-      {errors?.email && <p className="error-message">{errors.email}</p>}
+          {/* {error && <p className="error-message">{error}</p> } */}
+          {/* {hookError && <p className="error-message">{hookError?.message}</p>} */}
+        </form>
+        <p>
+          Don't have an account? <Link to="/signup">Sign up first</Link>{" "}
+        </p>
 
-      <input type="password" placeholder="password" onChange={handlePasswordChange} />
-      {errors?.password && <p className="error-message">{errors.password}</p> }
-      <button>Login</button>
-
-      {/* {error && <p className="error-message">{error}</p> } */}
-      {/* {hookError && <p className="error-message">{hookError?.message}</p>} */}
-
-
-      <p>Don't have an account? <Link to="/signup">Sign up first</Link> </p>
-  </form>
-
-  <button onClick={() => signInWithGoogle()}>Google</button>
-</div>;
+        <button
+          className="social-signin google"
+          onClick={() => signInWithGoogle()}
+        >
+          <FaGoogle /> SignIn With Google
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default SignIn;

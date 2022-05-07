@@ -103,16 +103,18 @@ const SignUp = () => {
     <div className="login-container">
       <div className="login-title">Sign up</div>
       <form className="login-form" onSubmit={handleLogin}>
+      {errors?.email && <p className="error-message">{errors.email}</p>}
         <input
           type="text"
           placeholder="Your Email"
           onChange={handleEmailChange}
         />
-        {errors?.email && <p className="error-message">{errors.email}</p>}
+        {/* {errors?.email && <p className="error-message">{errors.email}</p>} */}
         <div className="relative">
           <input
           type="password"
           
+
             placeholder="password"
             onChange={handlePasswordChange}
           />

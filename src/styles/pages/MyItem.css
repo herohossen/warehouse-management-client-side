@@ -1,0 +1,27 @@
+ 
+.myItems{
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    border: solid 1px;
+    border-color:orange;
+  }
+  
+  .myItems td,.myItems th {
+    border: 2px solid orange;
+    padding: 8px;
+  }
+  
+  .myItems:nth-child(even){background-color: #f2f2f2;}
+  
+  .myItems tr:hover {background-color: #ddd;}
+  
+  .myItems th {
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: orange;
+    color: white;
+    /* border-color: black; */
+  }

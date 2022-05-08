@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import PageTitle from "../../../../styles/Shared/PageTitle";
 import "../ManageInventory/ManageInventory.css";
 
 const ManageInventory = () => {
@@ -34,7 +35,9 @@ const ManageInventory = () => {
   };
   return (
     <div>
-      <h1>Items {items.length}</h1>
+      <PageTitle title={"Manage Inventory"}></PageTitle>
+      <h1 className="text-center">Mange Inventory</h1>
+      <h1>Items Count: {items.length}</h1>
       <div className="text-center">
         <button
           className="me-auto btn btn-primary"

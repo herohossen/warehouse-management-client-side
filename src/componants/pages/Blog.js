@@ -1,11 +1,15 @@
 import React from "react";
 
 import "../../styles/pages/Blog.css";
+import PageTitle from "../../styles/Shared/PageTitle";
 
 const Blog = () => {
   return (
     <div>
-      <h1 className="table-header">Q.No 1: Difference Between Node Js And JavaScript</h1>
+      <PageTitle title={"Blogs"}></PageTitle>
+      <h1 className="table-header">
+        Q.No 1: Difference Between Node Js And JavaScript
+      </h1>
       <table id="table-container">
         <tr>
           <th>S.No</th>

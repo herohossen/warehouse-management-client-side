@@ -18,6 +18,7 @@ import SignUp from "./componants/Auths/SignUp";
 import Inventory from "./componants/pages/Inventory/Inventory/Inventory";
 import { ToastContainer } from "react-toastify";
 import SignIn from "./componants/Auths/SignIn";
+import Footer from "./componants/Shared/Footer";
 
 function App() {
   return (
@@ -91,6 +92,7 @@ function App() {
         ></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
+      <Footer />
       <ToastContainer
         position="top-right"
         autoClose={5000}

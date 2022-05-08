@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import "../../styles/pages/ManageItem.css";
-
+import PageTitle from "../../styles/Shared/PageTitle";
 
 const ManageItem = () => {
   const [items, setItems] = useState([]);
@@ -34,12 +34,13 @@ const ManageItem = () => {
 
   return (
     <div className="w-100 p-5 mx-auto">
-      <h1>Manage Item</h1>
-      {/* You Have Added {items.length} item */}
+      <PageTitle title={"Manage Item"}></PageTitle>
+      <h1 className="text-center">Manage Item</h1>
+      <h2> Item Count: {items.length}</h2>
       <br />
       <br />
-      <Table bordered hover size="sm" className="bordercell">
-        <thead className="bordercell">
+      <Table bordered hover size="sm" className="manageItems">
+        <thead className="manageItems">
           <tr>
             <th>Img</th>
             <th>Id</th>
@@ -51,7 +52,7 @@ const ManageItem = () => {
           </tr>
         </thead>
         {items.map((item) => (
-          <tbody className="bordercell" key={item._id}>
+          <tbody className="manageItems" key={item._id}>
             <tr>
               <td>
                 <img height={40} width={40} src={item.img} alt="" />
@@ -68,7 +69,7 @@ const ManageItem = () => {
               <td>
                 <button
                   className="btn btn-danger"
-                  monClick={() => handeluserdelete(item._id)}
+                  onClick={() => handeluserdelete(item._id)}
                 >
                   Delete
                 </button>

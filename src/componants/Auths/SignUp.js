@@ -7,8 +7,9 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { useLocation, useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import PageTitle from "../../styles/Shared/PageTitle";
 const SignUp = () => {
   const [userInfo, setUserInfo] = useState({
     email: "",
@@ -106,6 +107,7 @@ const SignUp = () => {
   }, [user]);
   return (
     <div className="login-container2">
+      <PageTitle title={"Sign Up"}></PageTitle>
       <div className="left">
         <div className="login-title">Sign up</div>
         <form className="" onSubmit={handleLogin}>
@@ -155,7 +157,7 @@ const SignUp = () => {
           className="social-signin google"
           onClick={() => signInWithGoogle()}
         >
-          <FaGoogle/>  Signup with Google
+          <FaGoogle /> Signup with Google
         </button>
       </div>
 

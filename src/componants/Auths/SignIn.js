@@ -7,6 +7,7 @@ import "../../styles/Auths/SignIn.css";
 import { FaGoogle } from "react-icons/fa";
 import axios from "axios";
 import { sendPasswordResetEmail } from "firebase/auth";
+import PageTitle from "../../styles/Shared/PageTitle";
 
 const SignIn = () => {
   const [userInfo, setUserInfo] = useState({
@@ -108,6 +109,7 @@ const SignIn = () => {
   };
   return (
     <div className="login-container">
+      <PageTitle title={"Sign In"}></PageTitle>
       <h1 className="login-title text-center">LOGIN</h1>
       <div className="login-form">
         <form onSubmit={handleLogin} autoComplete="off" required>

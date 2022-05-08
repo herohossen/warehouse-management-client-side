@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import auth from "../../firebase.init";
 import "../../styles/pages/MyItem.css";
-
+import PageTitle from "../../styles/Shared/PageTitle";
 const MyItem = () => {
   const [user] = useAuthState(auth);
   const [userItem, setUserItem] = useState([]);
@@ -57,10 +57,11 @@ const MyItem = () => {
   };
   return (
     <div className="w-100 p-5 mx-auto">
+      <PageTitle title={"My Item"}></PageTitle>
       <h1>My Item</h1>
       <h2>I have added items: {userItem.length}</h2>
-      <Table bordered hover size="sm" className="bordercell">
-        <thead className="bordercell">
+      <Table bordered hover size="sm" className="myItems">
+        <thead className="myItems">
           <tr>
             <th>Id</th>
             <th>Img</th>
@@ -71,7 +72,7 @@ const MyItem = () => {
           </tr>
         </thead>
         {userItem.map((userItem) => (
-          <tbody className="bordercell" key={userItem._id}>
+          <tbody className="myItems" key={userItem._id}>
             <tr>
               <td>{userItem._id}</td>
               <td>

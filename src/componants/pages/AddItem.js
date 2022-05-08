@@ -7,6 +7,7 @@ import auth from "../../firebase.init";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import PageTitle from "../../styles/Shared/PageTitle";
 
 const AddItem = () => {
   // const [item, setItem] = useState([]);
@@ -51,6 +52,7 @@ const AddItem = () => {
 
   return (
     <div className="w-50 mx-auto">
+      <PageTitle title={"Add Item"}></PageTitle>
       <h1>
         <u>Add New Item</u>
       </h1>

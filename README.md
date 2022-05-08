@@ -1,3 +1,18 @@
+# Project Name: [TecMania](https://inventory-management-p11.web.app/)
+
+Live site Url [https://inventory-management-p11.web.app/](https://inventory-management-p11.web.app/
+)
+
+## Dependency Use
+
+* React Router
+* React Firebase Hooks
+* React Bootstrap
+* React Icons
+* React Toastify
+* React Helmet Async
+*jwt
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

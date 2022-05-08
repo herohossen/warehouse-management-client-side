@@ -3,8 +3,8 @@ import "../Banner/Banner.css";
 import { Carousel } from "react-bootstrap";
 
 import banner1 from "../../../../images/banner/banner1.jpg";
-import banner2 from "../../../../images/banner/banner2.jpg";
-import banner4 from "../../../../images/banner/banner4.jpg";
+import banner6 from "../../../../images/banner/banner6.png";
+import banner5 from "../../../../images/banner/banner5.png";
 
 const Banner = () => {
   const [index, setIndex] = useState(0);
@@ -26,7 +26,7 @@ const Banner = () => {
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img className="d-block w-100" src={banner2} alt="Second slide" />
+        <img className="d-block w-100" src={banner6} alt="Second slide" />
 
         <Carousel.Caption>
           <h3>Second slide label</h3>
@@ -34,7 +34,7 @@ const Banner = () => {
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img className="d-block w-100" src={banner4} alt="Third slide" />
+        <img className="d-block w-100" src={banner5} alt="Third slide" />
 
         <Carousel.Caption>
           <h3>Third slide label</h3>

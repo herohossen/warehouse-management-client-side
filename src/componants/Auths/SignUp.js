@@ -105,6 +105,16 @@ const SignUp = () => {
       navigate(from);
     }
   }, [user]);
+
+  useEffect(() => {
+    if (loading) {
+      return (
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      );
+    }
+  }, [user, loading]);
   return (
     <div className="login-container2">
       <PageTitle title={"Sign Up"}></PageTitle>

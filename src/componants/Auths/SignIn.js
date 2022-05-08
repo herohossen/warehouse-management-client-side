@@ -95,9 +95,16 @@ const SignIn = () => {
     }
   }, [hookError, googleError]);
 
-  if (loading) {
-    return <p>Loding...</p>;
-  }
+
+  useEffect(() => {
+    if (loading) {
+      return (
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      );
+    }
+  }, [user, loading]);
   // password resat
   const resetPassword = () => {
     if (userInfo.email) {

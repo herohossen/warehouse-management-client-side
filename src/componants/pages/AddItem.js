@@ -31,26 +31,29 @@ const AddItem = () => {
       description: event.target.description.value,
     };
     console.log(info);
-    axios.post("http://localhost:8888/item", info).then((response) => {
-      const { data } = response;
-      if (data.insertedId) {
-        Swal.fire({
-          // position: "top-end",
-          icon: "success",
-          title: "New Item Added Successfully",
-          showConfirmButton: false,
-          timer: 2000,
-        });
+    axios
+      .post("https://inventory-management-p11.herokuapp.com/item", info)
+      .then((response) => {
+        const { data } = response;
+        if (data.insertedId) {
+          Swal.fire({
+            // position: "top-end",
+            icon: "success",
+            title: "New Item Added Successfully",
+            showConfirmButton: false,
+            timer: 2000,
+          });
 
-        event.target.reset();
-      }
-    });
+          event.target.reset();
+        }
+      });
   };
-
 
   return (
     <div className="w-50 mx-auto">
-      {/* <h2>Add Item: {item.length}</h2> */}
+      <h1>
+        <u>Add New Item</u>
+      </h1>
       <form onSubmit={handlePlaceOrder}>
         <input
           className="w-100 mb-2"
@@ -74,8 +77,6 @@ const AddItem = () => {
           disabled
         />
         <br />
-        {/* <input className='w-100 mb-2' type="text" value={item.name} name="service" placeholder='service' required readOnly /> */}
-        <br />
         <input
           className="w-100 mb-2"
           type="text"
@@ -84,7 +85,6 @@ const AddItem = () => {
           autoComplete="off"
           required
         />
-        <br />
         <br />
         <input
           className="w-100 mb-2"
@@ -103,7 +103,6 @@ const AddItem = () => {
           required
         />
         <br />
-        <br />
         <input
           className="w-100 mb-2"
           type="text"
@@ -112,7 +111,6 @@ const AddItem = () => {
           required
         />
         <br />
-        <br />
         <input
           className="w-100 mb-2"
           type="text"
@@ -120,7 +118,6 @@ const AddItem = () => {
           placeholder="shipping"
           required
         />
-        <br />
         <br />
         <input
           className="w-100 mb-2"
@@ -139,7 +136,6 @@ const AddItem = () => {
           cols="50"
           required
         />
-
         <br />
         <input
           className="w-100 mb-2"
@@ -152,7 +148,6 @@ const AddItem = () => {
         <input className="btn btn-primary" type="submit" value="Add Item" />
       </form>
     </div>
-    
   );
 };
 

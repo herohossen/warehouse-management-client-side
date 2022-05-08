@@ -7,7 +7,7 @@ const ManageInventory = () => {
   const [items, setItems] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("http://localhost:8888/item")
+    fetch("https://inventory-management-p11.herokuapp.com/item")
       // fetch("https://inventory-management-p11.herokuapp.com/item")
       .then((res) => res.json())
       .then((data) => setItems(data));
@@ -17,7 +17,7 @@ const ManageInventory = () => {
     const proceed = window.confirm("Are you sure you want to delete?");
     if (proceed) {
       console.log("Deleting user", id);
-      const url = `http://localhost:8888/item/${id}`;
+      const url = `https://inventory-management-p11.herokuapp.com/item/${id}`;
       fetch(url, {
         method: "DELETE",
       }).then((res) =>
@@ -35,7 +35,16 @@ const ManageInventory = () => {
   return (
     <div>
       <h1>Items {items.length}</h1>
-      <button onClick={() => navigate(`/addinventoryitem`)}>Add Item</button>
+      <div className="text-center">
+        <button
+          className="me-auto btn btn-primary"
+          onClick={() => navigate(`/addinventoryitem`)}
+        >
+          Add Item
+        </button>
+      </div>
+      <br />
+      <br />
       <Table striped bordered hover size="sm" className="manageInventory">
         <thead className="">
           <tr>
@@ -44,6 +53,7 @@ const ManageInventory = () => {
             <th>Suplaier</th>
             <th>Quantity</th>
             <th>Img</th>
+            <th>Actions</th>
           </tr>
         </thead>
         {items.map((item) => (
@@ -56,11 +66,14 @@ const ManageInventory = () => {
               <td>
                 <img height={40} width={40} src={item.img} alt="" />
               </td>
-              <td>
+              {/* <td>
                 <button>Update</button>
-              </td>
+              </td> */}
               <td>
-                <button onClick={() => handeluserdelete(item._id)}>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => handeluserdelete(item._id)}
+                >
                   Delete
                 </button>
               </td>

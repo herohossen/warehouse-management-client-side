@@ -26,7 +26,7 @@ const AddInventoryItem = () => {
     };
 
     //post Request send data nto server
-    fetch("http://localhost:8888/item", {
+    fetch("https://inventory-management-p11.herokuapp.com/item", {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
@@ -48,9 +48,8 @@ const AddInventoryItem = () => {
 
   return (
     <div className="w-50 mx-auto">
-      {/* <h2>Add Item: {item.length}</h2> */}
+      <h2>Add a Inventory Item</h2>
       <form onSubmit={handelAddUser}>
-        {/* <input className='w-100 mb-2' type="text" value={item.name} name="service" placeholder='service' required readOnly /> */}
         <br />
         <input
           className="w-100 mb-2"
@@ -60,7 +59,6 @@ const AddInventoryItem = () => {
           autoComplete="off"
           required
         />
-        <br />
         <br />
         <input
           className="w-100 mb-2"
@@ -79,7 +77,6 @@ const AddInventoryItem = () => {
           required
         />
         <br />
-        <br />
         <input
           className="w-100 mb-2"
           type="text"
@@ -88,7 +85,6 @@ const AddInventoryItem = () => {
           required
         />
         <br />
-        <br />
         <input
           className="w-100 mb-2"
           type="text"
@@ -96,7 +92,6 @@ const AddInventoryItem = () => {
           placeholder="shipping"
           required
         />
-        <br />
         <br />
         <input
           className="w-100 mb-2"
@@ -125,7 +120,11 @@ const AddInventoryItem = () => {
           required
         />
         <br />
-        <input className="btn btn-primary" type="submit" value="Place Order" />
+        <input
+          className="btn btn-primary"
+          type="submit"
+          value="Add Inventory Item"
+        />
       </form>
     </div>
   );

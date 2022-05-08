@@ -5,6 +5,8 @@ import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import "../../styles/Auths/SignIn.css";
 import { FaGoogle } from "react-icons/fa";
+import axios from "axios";
+import { sendPasswordResetEmail } from "firebase/auth";
 
 const SignIn = () => {
   const [userInfo, setUserInfo] = useState({
@@ -48,12 +50,21 @@ const SignIn = () => {
     }
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    console.log(userInfo);
+    // console.log(userInfo);
+    await signInWithEmail(userInfo.email, userInfo.password);
+    const { data } = await axios.post(
+      "https://inventory-management-p11.herokuapp.com/login",
+      {
+        email: userInfo.email,
+      }
+    );
 
-    signInWithEmail(userInfo.email, userInfo.password);
+    // console.log(data);
+    localStorage.setItem("accessToken", data.accessToken);
+    navigate(from, { replace: true });
   };
 
   const navigate = useNavigate();
@@ -86,10 +97,18 @@ const SignIn = () => {
   if (loading) {
     return <p>Loding...</p>;
   }
-
+  // password resat
+  const resetPassword = () => {
+    if (userInfo.email) {
+      sendPasswordResetEmail(userInfo.email);
+      toast.success("Sent email");
+    } else {
+      toast.warning("Enter your email address Please");
+    }
+  };
   return (
     <div className="login-container">
-      <div className="login-title">LOGIN</div>
+      <h1 className="login-title text-center">LOGIN</h1>
       <div className="login-form">
         <form onSubmit={handleLogin} autoComplete="off" required>
           <input
@@ -116,7 +135,12 @@ const SignIn = () => {
         <p>
           Don't have an account? <Link to="/signup">Sign up first</Link>{" "}
         </p>
-
+        <p className="text-center">
+          Forget Password?{" "}
+          <button className="" onClick={resetPassword}>
+            Reset Password
+          </button>{" "}
+        </p>
         <button
           className="social-signin google"
           onClick={() => signInWithGoogle()}

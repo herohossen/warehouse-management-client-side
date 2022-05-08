@@ -3,6 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 // import "sweetalert2/src/sweetalert2.scss";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
+import RequireAuth from "./componants/RequireAuth";
 // import RequireAuth from "./componants/RequireAuth";
 import Blog from "./componants/pages/Blog";
 import Header from "./componants/Shared/Header/Header";
@@ -26,19 +27,68 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/home" element={<Home />}></Route>
-
-        <Route path="/manageinventory" element={<ManageInventory />}></Route>
-        <Route path="/addinventoryitem" element={<AddInventoryItem />}></Route>
-
-        <Route path="/additem" element={<AddItem />}></Route>
-        <Route path="/additem" element={<AddItem />}></Route>
-        <Route path="/manageitem" element={<ManageItem />}></Route>
-        <Route path="/myitem" element={<MyItem />}></Route>
         <Route path="/blog" element={<Blog />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>
         <Route path="/signin" element={<SignIn />}></Route>
+
+        <Route
+          path="/manageinventory"
+          element={
+            <RequireAuth>
+              <ManageInventory />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/addinventoryitem"
+          element={
+            <RequireAuth>
+              <AddInventoryItem />
+            </RequireAuth>
+          }
+        ></Route>
+
+        <Route
+          path="/additem"
+          element={
+            <RequireAuth>
+              <AddItem />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/additem"
+          element={
+            <RequireAuth>
+              <AddItem />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/manageitem"
+          element={
+            <RequireAuth>
+              <ManageItem />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/myitem"
+          element={
+            <RequireAuth>
+              <MyItem />
+            </RequireAuth>
+          }
+        ></Route>
         {/* <Route path="/inventory" element={<Inventory />}></Route> */}
-        <Route path="/inventory/:itemId" element={<Inventory />}></Route>
+        <Route
+          path="/inventory/:itemId"
+          element={
+            <RequireAuth>
+              <Inventory />
+            </RequireAuth>
+          }
+        ></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
       <ToastContainer

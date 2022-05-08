@@ -6,7 +6,7 @@ import "../../styles/pages/ManageItem.css";
 const ManageItem = () => {
   const [items, setItems] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:8888/item")
+    fetch("https://inventory-management-p11.herokuapp.com/item")
       // fetch("https://inventory-management-p11.herokuapp.com/item")
       .then((res) => res.json())
       .then((data) => setItems(data));
@@ -16,7 +16,7 @@ const ManageItem = () => {
     const proceed = window.confirm("Are you sure you want to delete?");
     if (proceed) {
       console.log("Deleting user", id);
-      const url = `http://localhost:8888/item/${id}`;
+      const url = `https://inventory-management-p11.herokuapp.com/item/${id}`;
       fetch(url, {
         method: "DELETE",
       }).then((res) =>
@@ -33,36 +33,43 @@ const ManageItem = () => {
   };
 
   return (
-    <div>
-      <h1>Items {items.length}</h1>
-
-      <Table striped bordered hover size="sm" className="bordercell">
+    <div className="w-100 p-5 mx-auto">
+      <h1>Manage Item</h1>
+      {/* You Have Added {items.length} item */}
+      <br />
+      <br />
+      <Table bordered hover size="sm" className="bordercell">
         <thead className="bordercell">
           <tr>
+            <th>Img</th>
             <th>Id</th>
             <th>name</th>
             <th>Suplaier</th>
+            <th>Price</th>
             <th>Quantity</th>
-            <th>Img</th>
+            <th>Actions</th>
           </tr>
         </thead>
         {items.map((item) => (
           <tbody className="bordercell" key={item._id}>
             <tr>
-              <td>{item._id}</td>
-              <td>{item.name}</td>
-              <td>{item.supplier}</td>
-              <td>{item.quantity}</td>
               <td>
                 <img height={40} width={40} src={item.img} alt="" />
               </td>
+              <td>{item._id}</td>
+              <td>{item.name}</td>
+              <td>{item.supplier}</td>
+              <td>{item.price}</td>
+              <td>{item.quantity}</td>
+
+              {/* <td>
+                <button>Update</button>
+              </td> */}
               <td>
-                <button>
-               Update
-                </button>
-              </td>
-              <td>
-                <button onClick={() => handeluserdelete(item._id)}>
+                <button
+                  className="btn btn-danger"
+                  monClick={() => handeluserdelete(item._id)}
+                >
                   Delete
                 </button>
               </td>

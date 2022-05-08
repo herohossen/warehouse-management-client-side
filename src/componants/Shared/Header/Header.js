@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../../images/banner/logo.jpg";
+// import logo from "../../../images/banner/logo.jpg";
 import laptop from "../../../images/banner/laptop.png";
 
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
@@ -52,56 +52,47 @@ const Header = () => {
               >
                 Blogs
               </NavLink>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "active-link" : "link"
-                }
-                to="/inventory"
-              >
-                Inventory
-              </NavLink>
-              {/* dropdown menu start */}
-              <NavDropdown title="Inventory Items" id="collasible-nav-dropdown">
-                <NavDropdown.Item as={Link} to="/manageinventory">
-                  Manage Inventory
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/addinventoryitem">
-                  Add New Item
-                </NavDropdown.Item>
-                {/* <NavDropdown.Divider /> */}
-                {/* this is only log out button */}
-              </NavDropdown>
-              {/* dropdown menu end */}
-              {/* navbar menu end first section */}
             </Nav>
-            <Nav>
-              {/* dropdown menu start */}
-              <NavDropdown title="User Menu" id="collasible-nav-dropdown">
-                <NavDropdown.Item as={Link} to="/manageitem">
-                  Manage Items
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/additem">
-                  Add Item
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/myitem">
-                  My Items
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                {/* this is only log out button */}
-                {/* <NavDropdown.Item as={Link} to="/">
-                  Log Out
-                </NavDropdown.Item> */}
-              </NavDropdown>
-              {/* dropdown menu end */}
-              {/* navbar menu end first section */}
 
+            <Nav>
               {user ? (
-                <button
-                  className="btn btn-warning"
-                  onClick={() => signOut(auth)}
-                >
-                  Sign Out
-                </button>
+                <>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "active-link" : "link"
+                    }
+                    to="/manageinventory"
+                  >
+                    ManageInventory
+                  </NavLink>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "active-link" : "link"
+                    }
+                    to="/addinventoryitem"
+                  >
+                    Add Inventory
+                  </NavLink>
+                  <NavDropdown title="User Menu" id="collasible-nav-dropdown">
+                    <NavDropdown.Item as={Link} to="/manageitem">
+                      Manage Items
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/additem">
+                      Add Item
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/myitem">
+                      My Items
+                    </NavDropdown.Item>
+                    <NavDropdown.Divider />
+                  </NavDropdown>
+
+                  <button
+                    className="btn btn-warning"
+                    onClick={() => signOut(auth)}
+                  >
+                    Sign Out
+                  </button>
+                </>
               ) : (
                 <>
                   <NavLink

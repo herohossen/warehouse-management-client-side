@@ -19,7 +19,7 @@ const Inventory = () => {
       const newQuantity = { quantity };
       (async () => {
         const { data } = await axios.put(
-          `http://localhost:8888/item/${itemId}`,
+          `https://inventory-management-p11.herokuapp.com/item/${itemId}`,
           newQuantity
         );
         console.log("success", data);
@@ -53,7 +53,7 @@ const Inventory = () => {
       const newQuantity = { quantity };
       (async () => {
         const { data } = await axios.put(
-          `http://localhost:8888/item/${itemId}`,
+          `https://inventory-management-p11.herokuapp.com/item/${itemId}`,
           newQuantity
         );
         console.log("success", data);
